@@ -13,7 +13,7 @@ This Hello World includes:
 #Tools used
 
 * IntelliJIDEA 14.0.1 : https://www.jetbrains.com/idea/
-** IntelliJIDEA JNI Helper plugin : https://plugins.jetbrains.com/plugin/7670
++ IntelliJIDEA JNI Helper plugin : https://plugins.jetbrains.com/plugin/7670
 * Java JDK 1.6
 * Android SDK 24.0.2
 * NDK r10d
@@ -31,11 +31,18 @@ The configuration of NDK in build.gradle script
 
 ![Hello World](http://1.bp.blogspot.com/-q5go9_OKQdA/VOVWUFfvKuI/AAAAAAAAD6o/ZQtA3o1UnNE/s1600/demo_build_gradle.png)
 
-Configure the path to the NDK in ./local.properties file:
+The tricky part is :
+```
+project.plugins.findPlugin('com.android.application').getNdkFolder().absolutePath + File.separator
+```
 
+to integrate correctly the path to the NDK (see below).
+
+Configure the path to the NDK in ./local.properties file (no space nor special characters in path name):
+```
 sdk.dir=path_to_android_sdk
 ndk.dir=path_to_android_ndk
-
+```
 
 The unit testing part
 
